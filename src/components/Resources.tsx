@@ -245,7 +245,7 @@ const Resources = () => {
 
             <div className="bg-white rounded-xl p-6">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-success text-white rounded-full flex items-center justify-center font-bold text-lg">
+                <div className="flex-shrink-0 w-10 h-10 text-white rounded-full flex items-center justify-center font-bold text-lg bg-fuchsia-400">
                   3
                 </div>
                 <div>
@@ -259,7 +259,7 @@ const Resources = () => {
 
             <div className="bg-white rounded-xl p-6">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-warning text-white rounded-full flex items-center justify-center font-bold text-lg">
+                <div className="flex-shrink-0 w-10 h-10 text-white rounded-full flex items-center justify-center font-bold text-lg bg-emerald-500">
                   4
                 </div>
                 <div>
