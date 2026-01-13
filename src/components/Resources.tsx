@@ -217,9 +217,9 @@ const Resources = () => {
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             <div className="bg-white rounded-xl p-6">
               <div className="flex items-start gap-4">
-                <span className="flex-shrink-0 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg">
+                <div className="flex-shrink-0 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg">
                   1
-                </span>
+                </div>
                 <div>
                   <h4 className="font-bold text-lg mb-2">Получили подозрительную ссылку?</h4>
                   <p className="text-gray-600">
@@ -231,9 +231,9 @@ const Resources = () => {
 
             <div className="bg-white rounded-xl p-6">
               <div className="flex items-start gap-4">
-                <span className="flex-shrink-0 w-10 h-10 bg-secondary text-white rounded-full flex items-center justify-center font-bold text-lg">
+                <div className="flex-shrink-0 w-10 h-10 bg-secondary text-white rounded-full flex items-center justify-center font-bold text-lg">
                   2
-                </span>
+                </div>
                 <div>
                   <h4 className="font-bold text-lg mb-2">Сомневаетесь в сайте?</h4>
                   <p className="text-gray-600">
@@ -245,9 +245,9 @@ const Resources = () => {
 
             <div className="bg-white rounded-xl p-6">
               <div className="flex items-start gap-4">
-                <span className="flex-shrink-0 w-10 h-10 bg-success text-white rounded-full flex items-center justify-center font-bold text-lg">
+                <div className="flex-shrink-0 w-10 h-10 bg-success text-white rounded-full flex items-center justify-center font-bold text-lg">
                   3
-                </span>
+                </div>
                 <div>
                   <h4 className="font-bold text-lg mb-2">Слабые пароли?</h4>
                   <p className="text-gray-600">
@@ -259,9 +259,9 @@ const Resources = () => {
 
             <div className="bg-white rounded-xl p-6">
               <div className="flex items-start gap-4">
-                <span className="flex-shrink-0 w-10 h-10 bg-warning text-white rounded-full flex items-center justify-center font-bold text-lg">
+                <div className="flex-shrink-0 w-10 h-10 bg-warning text-white rounded-full flex items-center justify-center font-bold text-lg">
                   4
-                </span>
+                </div>
                 <div>
                   <h4 className="font-bold text-lg mb-2">Подозреваете утечку?</h4>
                   <p className="text-gray-600">
