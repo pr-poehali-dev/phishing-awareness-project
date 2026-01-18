@@ -191,6 +191,79 @@ const ScamExamples = () => {
           protection: 'Telegram Premium оформляется только в официальном приложении. Не переходите по сомнительным ссылкам.'
         }
       ]
+    },
+    ai: {
+      title: 'AI-мошенничество',
+      icon: 'Bot',
+      color: 'destructive',
+      schemes: [
+        {
+          name: 'Deepfake видеозвонки',
+          description: 'Использование искусственного интеллекта для создания поддельных видео',
+          howItWorks: [
+            'Мошенники создают видео с лицом знакомого или руководителя',
+            'Звонят по видеосвязи, притворяясь этим человеком',
+            'Просят срочно перевести деньги или предоставить доступ',
+            'Жертва доверяет "видео" и выполняет требования'
+          ],
+          protection: 'Установите кодовое слово с близкими. При сомнениях перезвоните по другому каналу связи.'
+        },
+        {
+          name: 'Клонирование голоса',
+          description: 'AI создаёт копию голоса родственника или коллеги',
+          howItWorks: [
+            'Мошенники находят записи голоса жертвы (соцсети, видео)',
+            'С помощью AI клонируют голос за несколько минут',
+            'Звонят родственникам от имени жертвы с просьбой о помощи',
+            '"Я попал в беду, срочно нужны деньги на карту"'
+          ],
+          protection: 'Не публикуйте голосовые сообщения в открытом доступе. Проверяйте информацию через другие источники.'
+        },
+        {
+          name: 'Поддельные фото и документы',
+          description: 'Генерация фальшивых документов с помощью нейросетей',
+          howItWorks: [
+            'AI создаёт правдоподобные паспорта, справки, договоры',
+            'Используются для открытия счетов, получения кредитов',
+            'Подделка селфи с паспортом для верификации',
+            'Жертва узнаёт о мошенничестве только после взлома'
+          ],
+          protection: 'Банки внедряют защиту от AI-подделок. Используйте биометрическую идентификацию где возможно.'
+        },
+        {
+          name: 'AI-боты в соцсетях',
+          description: 'Автоматизированные боты создают поддельные профили',
+          howItWorks: [
+            'AI генерирует реалистичные фото несуществующих людей',
+            'Создаются тысячи фейковых аккаунтов для обмана',
+            'Боты выстраивают доверительные отношения месяцами',
+            'Затем просят деньги под разными предлогами'
+          ],
+          protection: 'Проверяйте профили на реальность. Остерегайтесь слишком красивых фото и идеальных историй.'
+        },
+        {
+          name: 'Фишинговые письма с AI',
+          description: 'Нейросети пишут убедительные письма без ошибок',
+          howItWorks: [
+            'Раньше фишинг выдавали грамматические ошибки',
+            'Теперь AI создаёт идеальные тексты на любом языке',
+            'Письма от "банка" или "службы поддержки" выглядят настоящими',
+            'Жертва переходит по ссылке и вводит данные'
+          ],
+          protection: 'Не доверяйте письмам с просьбой ввести данные. Проверяйте адрес отправителя и домен ссылок.'
+        },
+        {
+          name: 'Романтические аферы с AI',
+          description: 'AI ведёт переписку от несуществующего человека',
+          howItWorks: [
+            'Создаётся привлекательный профиль с AI-фотографиями',
+            'Бот ведёт переписку, изучая жертву и подстраиваясь',
+            'Выстраиваются "отношения" на протяжении недель или месяцев',
+            'Затем просит денег на "билет для встречи" или "помощь семье"'
+          ],
+          protection: 'Будьте осторожны с онлайн-знакомствами. Требуйте видеозвонки и встречи в реальности.'
+        }
+      ]
     }
   };
 
@@ -205,26 +278,30 @@ const ScamExamples = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5 mb-8 bg-white p-2 rounded-xl shadow-lg">
-            <TabsTrigger value="links" className="flex items-center gap-2">
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-6 mb-8 bg-white p-2 rounded-xl shadow-lg">
+            <TabsTrigger value="links" className="flex items-center gap-2 data-[state=active]:bg-red-500 data-[state=active]:text-white transition-all">
               <Icon name="Link" size={18} />
               <span className="hidden sm:inline">Ссылки</span>
             </TabsTrigger>
-            <TabsTrigger value="sites" className="flex items-center gap-2">
+            <TabsTrigger value="sites" className="flex items-center gap-2 data-[state=active]:bg-red-500 data-[state=active]:text-white transition-all">
               <Icon name="Globe" size={18} />
               <span className="hidden sm:inline">Сайты</span>
             </TabsTrigger>
-            <TabsTrigger value="steam" className="flex items-center gap-2">
+            <TabsTrigger value="steam" className="flex items-center gap-2 data-[state=active]:bg-red-500 data-[state=active]:text-white transition-all">
               <Icon name="Gamepad2" size={18} />
               <span className="hidden sm:inline">Steam</span>
             </TabsTrigger>
-            <TabsTrigger value="vk" className="flex items-center gap-2">
+            <TabsTrigger value="vk" className="flex items-center gap-2 data-[state=active]:bg-red-500 data-[state=active]:text-white transition-all">
               <Icon name="Users" size={18} />
               <span className="hidden sm:inline">VK</span>
             </TabsTrigger>
-            <TabsTrigger value="telegram" className="flex items-center gap-2">
+            <TabsTrigger value="telegram" className="flex items-center gap-2 data-[state=active]:bg-red-500 data-[state=active]:text-white transition-all">
               <Icon name="MessageSquare" size={18} />
               <span className="hidden sm:inline">Telegram</span>
+            </TabsTrigger>
+            <TabsTrigger value="ai" className="flex items-center gap-2 data-[state=active]:bg-red-500 data-[state=active]:text-white transition-all">
+              <Icon name="Bot" size={18} />
+              <span className="hidden sm:inline">AI</span>
             </TabsTrigger>
           </TabsList>
 
@@ -400,6 +477,45 @@ const ScamExamples = () => {
                             {i + 1}
                           </span>
                           <span>{step}</span>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                  <div className="bg-green-50 p-4 rounded-lg border-l-4 border-success">
+                    <p className="font-semibold mb-2 flex items-center gap-2 text-success">
+                      <Icon name="Shield" size={18} />
+                      Как не попасться:
+                    </p>
+                    <p className="text-gray-700">{scheme.protection}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </TabsContent>
+
+          <TabsContent value="ai" className="space-y-6">
+            {examples.ai.schemes.map((scheme, idx) => (
+              <Card key={idx} className="border-2 border-red-500 hover:shadow-xl transition-shadow">
+                <CardHeader className="bg-gradient-to-r from-red-50 to-orange-50">
+                  <CardTitle className="flex items-center gap-3">
+                    <Icon name="Bot" size={24} className="text-red-500" />
+                    {scheme.name}
+                  </CardTitle>
+                  <CardDescription className="text-gray-700 text-base">
+                    {scheme.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4 pt-6">
+                  <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                    <p className="font-semibold mb-3 flex items-center gap-2 text-red-600">
+                      <Icon name="AlertTriangle" size={18} />
+                      Как работает схема:
+                    </p>
+                    <ol className="space-y-2 ml-4">
+                      {scheme.howItWorks.map((step, stepIdx) => (
+                        <li key={stepIdx} className="flex items-start gap-2">
+                          <span className="text-red-500 font-bold min-w-[24px]">{stepIdx + 1}.</span>
+                          <span className="text-gray-700">{step}</span>
                         </li>
                       ))}
                     </ol>
