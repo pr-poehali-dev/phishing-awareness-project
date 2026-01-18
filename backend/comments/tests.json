@@ -1,0 +1,20 @@
+{
+  "tests": [
+    {
+      "name": "Get all comments",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Create new comment",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "authorName": "Тестовый пользователь",
+        "content": "Отличный тест!"
+      },
+      "expectedStatus": 201
+    }
+  ]
+}

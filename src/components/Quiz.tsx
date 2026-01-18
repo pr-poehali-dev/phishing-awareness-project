@@ -3,6 +3,7 @@ import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
+import Comments from '@/components/Comments';
 
 interface Question {
   id: number;
@@ -406,6 +407,8 @@ const Quiz = () => {
             💡 Совет: Внимательно читайте вопросы и используйте знания из предыдущих разделов
           </p>
         </div>
+
+        <Comments />
       </div>
     </div>
   );
