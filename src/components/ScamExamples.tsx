@@ -198,7 +198,7 @@ const ScamExamples = () => {
     <div className="py-20 px-4 bg-gray-50">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-destructive to-warning bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-destructive to-warning bg-clip-text text-red-500">
             Примеры мошенничества и фишинга
           </h2>
           <p className="text-xl text-gray-700">Реальные схемы обмана, которые используют мошенники</p>
