@@ -12,8 +12,8 @@ def handler(event: dict, context) -> dict:
             'statusCode': 200,
             'headers': {
                 'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-                'Access-Control-Allow-Headers': 'Content-Type'
+                'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, X-Admin-Password'
             },
             'body': ''
         }
@@ -95,6 +95,37 @@ def handler(event: dict, context) -> dict:
                     'parentCommentId': parent_comment_id,
                     'createdAt': result[1].isoformat()
                 })
+            }
+
+        elif method == 'DELETE':
+            admin_password = event.get('headers', {}).get('X-Admin-Password', '')
+            correct_password = os.environ.get('ADMIN_PASSWORD', 'admin123')
+            
+            if admin_password != correct_password:
+                return {
+                    'statusCode': 403,
+                    'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                    'body': json.dumps({'error': 'Неверный пароль администратора'})
+                }
+            
+            params = event.get('queryStringParameters', {})
+            comment_id = params.get('id')
+            
+            if not comment_id:
+                return {
+                    'statusCode': 400,
+                    'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                    'body': json.dumps({'error': 'Comment ID is required'})
+                }
+            
+            delete_query = f'DELETE FROM {schema}.comments WHERE id = %s'
+            cur.execute(delete_query, (comment_id,))
+            conn.commit()
+            
+            return {
+                'statusCode': 200,
+                'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                'body': json.dumps({'success': True})
             }
 
         return {

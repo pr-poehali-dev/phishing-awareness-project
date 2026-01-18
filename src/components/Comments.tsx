@@ -25,6 +25,8 @@ const Comments = () => {
   const [replyTo, setReplyTo] = useState<number | null>(null);
   const [replyAuthorName, setReplyAuthorName] = useState('');
   const [replyContent, setReplyContent] = useState('');
+  const [adminMode, setAdminMode] = useState(false);
+  const [adminPassword, setAdminPassword] = useState('');
 
   const fetchComments = async () => {
     try {
@@ -107,6 +109,32 @@ const Comments = () => {
     }
   };
 
+  const handleDelete = async (commentId: number) => {
+    if (!adminPassword) {
+      toast.error('Введите пароль администратора');
+      return;
+    }
+
+    try {
+      const response = await fetch(`${COMMENTS_API_URL}?id=${commentId}`, {
+        method: 'DELETE',
+        headers: {
+          'X-Admin-Password': adminPassword
+        }
+      });
+
+      if (response.ok) {
+        toast.success('Комментарий удалён');
+        fetchComments();
+      } else {
+        const data = await response.json();
+        toast.error(data.error || 'Ошибка при удалении');
+      }
+    } catch (error) {
+      toast.error('Не удалось удалить комментарий');
+    }
+  };
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return new Intl.DateTimeFormat('ru-RU', {
@@ -125,12 +153,41 @@ const Comments = () => {
     <div className="max-w-4xl mx-auto mt-12">
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Icon name="MessageSquare" size={24} />
-            Комментарии к тесту
-          </CardTitle>
+          <div className="flex items-center justify-between">
+            <CardTitle className="flex items-center gap-2">
+              <Icon name="MessageSquare" size={24} />
+              Комментарии к тесту
+            </CardTitle>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setAdminMode(!adminMode)}
+              className="text-xs"
+            >
+              <Icon name="Shield" size={16} className="mr-1" />
+              {adminMode ? 'Выйти' : 'Админ'}
+            </Button>
+          </div>
         </CardHeader>
         <CardContent className="space-y-6">
+          {adminMode && (
+            <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <p className="text-sm font-semibold mb-2 flex items-center gap-2">
+                <Icon name="AlertTriangle" size={16} />
+                Режим администратора
+              </p>
+              <Input
+                type="password"
+                placeholder="Пароль администратора"
+                value={adminPassword}
+                onChange={(e) => setAdminPassword(e.target.value)}
+                className="mb-2"
+              />
+              <p className="text-xs text-gray-600">
+                После ввода пароля появятся кнопки удаления комментариев
+              </p>
+            </div>
+          )}
           <form onSubmit={handleSubmit} className="space-y-4">
             <Input
               placeholder="Ваше имя (необязательно)"
@@ -165,13 +222,25 @@ const Comments = () => {
             <div className="space-y-4">
               {topLevelComments.map(comment => (
                 <div key={comment.id} className="space-y-3">
-                  <div className="DELETE FROM comments WHERE author_name = 'Тестовый пользователь'">
+                  <div className="bg-white rounded-lg p-4 border border-gray-200">
                     <div className="flex items-start justify-between mb-2">
                       <div className="flex items-center gap-2">
                         <Icon name="User" size={20} className="text-purple-600" />
                         <span className="font-semibold text-gray-900">{comment.authorName}</span>
                       </div>
-                      <span className="text-xs text-gray-500">{formatDate(comment.createdAt)}</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs text-gray-500">{formatDate(comment.createdAt)}</span>
+                        {adminMode && adminPassword && (
+                          <Button
+                            variant="destructive"
+                            size="sm"
+                            onClick={() => handleDelete(comment.id)}
+                            className="h-7 px-2"
+                          >
+                            <Icon name="Trash2" size={14} />
+                          </Button>
+                        )}
+                      </div>
                     </div>
                     <p className="text-gray-700 whitespace-pre-wrap">{comment.content}</p>
                     <Button
@@ -221,7 +290,19 @@ const Comments = () => {
                           <Icon name="User" size={18} className="text-purple-500" />
                           <span className="font-semibold text-gray-900">{reply.authorName}</span>
                         </div>
-                        <span className="text-xs text-gray-500">{formatDate(reply.createdAt)}</span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-gray-500">{formatDate(reply.createdAt)}</span>
+                          {adminMode && adminPassword && (
+                            <Button
+                              variant="destructive"
+                              size="sm"
+                              onClick={() => handleDelete(reply.id)}
+                              className="h-7 px-2"
+                            >
+                              <Icon name="Trash2" size={14} />
+                            </Button>
+                          )}
+                        </div>
                       </div>
                       <p className="text-gray-700 whitespace-pre-wrap">{reply.content}</p>
                     </div>
