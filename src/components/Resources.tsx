@@ -217,7 +217,7 @@ const Resources = () => {
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             <div className="bg-white rounded-xl p-6">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg">
+                <div className="flex-shrink-0 w-10 h-10 text-white rounded-full flex items-center justify-center font-bold text-lg bg-rose-400">
                   1
                 </div>
                 <div>
@@ -231,7 +231,7 @@ const Resources = () => {
 
             <div className="bg-white rounded-xl p-6">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-secondary text-white rounded-full flex items-center justify-center font-bold text-lg">
+                <div className="flex-shrink-0 w-10 h-10 text-white rounded-full flex items-center justify-center font-bold text-lg bg-rose-400">
                   2
                 </div>
                 <div>
@@ -245,7 +245,7 @@ const Resources = () => {
 
             <div className="bg-white rounded-xl p-6">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 text-white rounded-full flex items-center justify-center font-bold text-lg bg-fuchsia-400">
+                <div className="flex-shrink-0 w-10 h-10 text-white rounded-full flex items-center justify-center font-bold text-lg bg-rose-400">
                   3
                 </div>
                 <div>
@@ -259,7 +259,7 @@ const Resources = () => {
 
             <div className="bg-white rounded-xl p-6">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 text-white rounded-full flex items-center justify-center font-bold text-lg bg-emerald-500">
+                <div className="flex-shrink-0 w-10 h-10 text-white rounded-full flex items-center justify-center font-bold text-lg bg-rose-400">
                   4
                 </div>
                 <div>
