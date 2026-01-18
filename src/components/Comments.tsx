@@ -165,7 +165,7 @@ const Comments = () => {
             <div className="space-y-4">
               {topLevelComments.map(comment => (
                 <div key={comment.id} className="space-y-3">
-                  <div className="bg-gray-50 rounded-lg p-4 border-l-4 border-purple-500">
+                  <div className="DELETE FROM comments WHERE author_name = 'Тестовый пользователь'">
                     <div className="flex items-start justify-between mb-2">
                       <div className="flex items-center gap-2">
                         <Icon name="User" size={20} className="text-purple-600" />
