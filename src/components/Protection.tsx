@@ -81,7 +81,7 @@ const Protection = () => {
     <div className="py-20 px-4">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-success to-primary bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-success to-primary bg-clip-text text-fuchsia-600">
             Как защититься от фишинга
           </h2>
           <p className="text-xl text-gray-700">Практические советы по безопасности в интернете</p>
